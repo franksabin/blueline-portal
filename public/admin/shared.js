@@ -570,12 +570,12 @@ function icon(name) {
 // "leaving a filtered page" reset below) must key on `page`, never on the nav
 // id, or switching sides would look like leaving Contacts entirely.
 const NAV_ITEMS = [
+  { id: 'compliance', href: '/admin/compliance.html', icon: 'shield', label: 'Compliance' },
   { id: 'dashboard', href: '/admin/', icon: 'home', label: 'Home' },
   { id: 'clients', page: 'contacts', href: '/admin/contacts.html', icon: 'users', label: 'Clients' },
   { id: 'prospects', page: 'contacts', href: '/admin/contacts.html?seg=prospects', icon: 'user', label: 'Prospects' },
   { id: 'operations', href: '/admin/operations.html', icon: 'check-square', label: 'Tasks' },
   { id: 'calendar', href: '/admin/calendar.html', icon: 'calendar', label: 'Calendar' },
-  { id: 'compliance', href: '/admin/compliance.html', icon: 'shield', label: 'Compliance' },
   { id: 'learning', href: '/admin/learning.html', icon: 'book', label: 'Learning' },
   { id: 'settings', href: '/admin/settings.html', icon: 'settings', label: 'Settings' },
 ];
@@ -864,7 +864,7 @@ function initShell(activePage, { navId } = {}) {
     </div>
     <nav class="sidebar-nav">
       ${NAV_ITEMS.map((n) =>
-        `<a href="${n.href}" data-nav-id="${n.id}" data-nav-page="${n.page || n.id}" class="${n.id === activeNav ? 'active' : ''}${n.id === 'compliance' ? ' hidden' : ''}"><span class="nav-icon">${icon(n.icon)}</span>${n.label}</a>`
+        `<a href="${n.href}" data-nav-id="${n.id}" data-nav-page="${n.page || n.id}" class="${n.id === activeNav ? 'active' : ''}"><span class="nav-icon">${icon(n.icon)}</span>${n.label}</a>`
       ).join('')}
     </nav>
     ${recentSidebarHtml()}
