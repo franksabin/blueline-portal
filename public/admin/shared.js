@@ -863,9 +863,14 @@ function initShell(activePage, { navId } = {}) {
       <button type="button" id="shell-search-btn"><span class="nav-icon">${icon('search')}</span>Search<span class="kbd">Ctrl K</span></button>
     </div>
     <nav class="sidebar-nav">
-      ${NAV_ITEMS.map((n) =>
-        `<a href="${n.href}" data-nav-id="${n.id}" data-nav-page="${n.page || n.id}" class="${n.id === activeNav ? 'active' : ''}"><span class="nav-icon">${icon(n.icon)}</span>${n.label}</a>`
-      ).join('')}
+      ${NAV_ITEMS.map((n, i) => {
+        const cls = [
+          n.id === activeNav ? 'active' : '',
+          n.id === 'compliance' ? 'nav-primary' : '',
+          i === 1 ? 'nav-rest-start' : '',
+        ].filter(Boolean).join(' ');
+        return `<a href="${n.href}" data-nav-id="${n.id}" data-nav-page="${n.page || n.id}" class="${cls}"><span class="nav-icon">${icon(n.icon)}</span>${n.label}</a>`;
+      }).join('')}
     </nav>
     ${recentSidebarHtml()}
     <div class="sidebar-notif">
